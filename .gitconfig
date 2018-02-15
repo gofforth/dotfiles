@@ -1,0 +1,12 @@
+[user]
+	name = DL Guilford
+	email = dlguilford@mgmail.com
+[push]
+	default = simple
+[alias]
+        lg = log --abbrev-commit --decorate --format=format:'%w(80, 2, 2)%n+ Author:  %an %n + Date:    %ar (%ai) %n + Hash:    %H %n + Subject: %s %n %n %b' 
+	stat = status --porcelain
+        branches = branch -a 
+        stashed = stash list
+        fuckit = !git reset --hard HEAD && git clean -d -f
+        
