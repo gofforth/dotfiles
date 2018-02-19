@@ -53,10 +53,16 @@ inoremap <right> <nop>
 set fillchars=vert:\│
  
 " set colors 
-hi FoldColumn    ctermfg=white    ctermbg=none
-hi VertSplit     ctermfg=white    ctermbg=none cterm=none
-hi User1         cterm=bold ctermbg=black
- 
+hi User1         cterm=reverse    gui=reverse
+hi LineNr        ctermfg=cyan
+hi NonText       ctermfg=magenta
+hi FoldColumn    ctermfg=white    ctermbg=none   guibg=bg       guifg=white
+hi ColorColumn   cterm=reverse    gui=reverse
+hi StatusLine    cterm=reverse    guibg=black    guifg=white
+hi StatusLineNC  cterm=reverse    guibg=black    guifg=white
+hi CursorLine    ctermbg=black    cterm=none     gui=none     guibg=#000000
+
+
 
 au BufRead,BufNewFile *.cpx set filetype=c ts=2 noexpandtab sts=2 sw=2
 au BufRead,BufNewFile *.hdr set filetype=c ts=2 noexpandtab sts=2 sw=2
