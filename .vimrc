@@ -5,16 +5,28 @@ set history=50                      " keep a 50 cmd history
 set showcmd                         " show commands as typed
 set incsearch                       " enable incremental search
 set nowrap                          " turn off word wrap
-set foldcolumn=1                    " give us a gutter 
 set nonumber                        " hide line numbers
 set ts=4 sts=4 sw=4                 " setup tabs
 set encoding=utf-8                  " use utf-8 instead of latin1
+set foldcolumn=1                    " give a little right margin
 set noexpandtab
 let mapleader = "-"
 
 " syntax formating based on file type
 syntax on
 filetype on
+
+" remove stupid GUI chrome
+if has('gui_running')
+	set go-=m                       " remove menubar
+	set go-=r                       " remove scrollbar
+	set go-=L
+	set go-=b
+	set go-=h
+	set go-=T                       " remove tool bar
+	colorscheme guilford
+	set gfn=Fira_Mono:h14
+endif
 
 " setup fancy status line
 set statusline=
@@ -25,7 +37,6 @@ set statusline+=%1*\|\ %{&fenc!=''?&fenc:&enc}\
 set statusline+=%1*\|\ %Y\ 
 set statusline+=%1*\|\ 0x%02.4B\ 
 set statusline+=%1*\ %-3m
-
 
 " handy key mappings 
 nnoremap <silent> <F2>  :set laststatus=2<CR>
@@ -49,7 +60,6 @@ inoremap <down>  <nop>
 inoremap <left>  <nop>
 inoremap <right> <nop>
 
-
 set fillchars=vert:\│
  
 " set colors 
@@ -58,16 +68,9 @@ hi LineNr        ctermfg=cyan
 hi NonText       ctermfg=magenta
 hi FoldColumn    ctermfg=white    ctermbg=none   guibg=bg       guifg=white
 hi ColorColumn   cterm=reverse    gui=reverse
-hi StatusLine    cterm=reverse    guibg=black    guifg=white
-hi StatusLineNC  cterm=reverse    guibg=black    guifg=white
+hi StatusLine    cterm=reverse    guibg=grey    guifg=white
+hi StatusLineNC  cterm=reverse    guibg=grey    guifg=white
 hi CursorLine    ctermbg=black    cterm=none     gui=none     guibg=#000000
-
-
-
-au BufRead,BufNewFile *.cpx set filetype=c ts=2 noexpandtab sts=2 sw=2
-au BufRead,BufNewFile *.hdr set filetype=c ts=2 noexpandtab sts=2 sw=2
-au BufRead,BufNewFile *.leg set filetype=lua
-au BufRead,BufNewFile *.java.tmpl set filetype=java
 
 " filetype specific stuffs
 autocmd FileType java setlocal ts=4 et sts=4 sw=4            " java tabs
