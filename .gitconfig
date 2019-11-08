@@ -1,9 +1,19 @@
 [push]
-	default = simple
-[alias]
-        lg = log --abbrev-commit --decorate --format=format:'%w(80, 2, 2)%n+ Author:  %an %n + Date:    %ar (%ai) %n + Hash:    %H %n + Subject: %s %n %n %b' 
-	stat = status --porcelain
-        branches = branch -a 
-        stashed = stash list
-        fuckit = !git reset --hard HEAD && git clean -d -f
-        
+   default = simple
+[alias]     
+   dl = clone --recursive
+   hash = rev-parse HEAD
+   trash = reset --hard HEAD
+   subup = submodule update --init --recursive
+   lg = log --abbrev-commit --decorate --format=format:'%w(80, 2, 2)%n %t (%p) %n %ar (%ai) %n %an (%ae) %n %s'
+   stat = status --porcelain
+   statq = status --porcelain -uno
+   branches = branch -l
+   allbranches = branch -a
+   stashed = stash list
+   fuckit = !git reset --hard HEAD && git clean -d -f
+   pushb = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+   changed = "!git diff --name-only HEAD^ HEAD"
+   conflicted = !git diff --name-only --diff-filter=U                                                                                                             
+   purge = !git clean -d -f
+   tags = tag -l -n1
